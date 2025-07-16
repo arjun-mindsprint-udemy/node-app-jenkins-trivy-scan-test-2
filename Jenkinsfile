@@ -73,7 +73,7 @@ pipeline {
                 script {
                     bat '''
                         echo Scanning built Docker image with Trivy...
-                        docker run --rm aquasec/trivy:latest image arjun150800/%APP_NAME%:%COMMIT_ID%
+                        trivy image arjun150800/%APP_NAME%:%COMMIT_ID%
                     '''
                 }
             }
