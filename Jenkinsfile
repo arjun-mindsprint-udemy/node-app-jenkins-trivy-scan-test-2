@@ -40,7 +40,7 @@ pipeline {
                 script {
                     bat '''
                         echo Running Trivy Filesystem Scan...
-                        docker run --rm -v %CD%:/app aquasec/trivy:latest fs /app
+                        trivy fs .
                     '''
                 }
             }
