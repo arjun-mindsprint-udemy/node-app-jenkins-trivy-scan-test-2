@@ -31,7 +31,7 @@ pipeline {
         stage('SonarQube Scan') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    bat '"C:\\Users\\arjun.nair\\Downloads\\sonar-scanner-cli-7.1.0.4889-windows-x64\\sonar-scanner-7.1.0.4889-windows-x64\\bin\\sonar-scanner.bat" -Dsonar.projectKey=%APP_NAME% -Dsonar.sources=. -Dsonar.host.url=http://127.0.0.1:9001'
+                    bat '"C:\\Users\\arjun.nair\\Downloads\\sonar-scanner-cli-7.1.0.4889-windows-x64\\sonar-scanner-7.1.0.4889-windows-x64\\bin\\sonar-scanner.bat" -Dsonar.projectKey=%APP_NAME% -Dsonar.sources=. -Dsonar.host.url=http://127.0.0.1:9001 -Dsonar.login=%SONAR_TOKEN%'
                 }
             }
 
