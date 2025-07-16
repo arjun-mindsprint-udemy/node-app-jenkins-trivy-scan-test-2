@@ -27,22 +27,22 @@ pipeline {
             }
         }
 
-        stage('Trivy Filesystem Scan') {
-            steps {
-                script {
-                    bat '''
-                        echo Running Trivy Filesystem Scan...
-                        docker run --rm -v %CD%:/app aquasec/trivy:latest fs /app
-                    '''
-                }
-            }
-        }
-
         stage('Login to Docker Hub') {
             steps {
                 bat '''
                     echo %DOCKERHUB_TOKEN% | docker login --username %DOCKERHUB_USERNAME% --password-stdin
                 '''
+            }
+        }
+
+        stage('Trivy Filesystem Scan') {
+            steps {
+                script {
+                    bat '''
+                        echo Running Trivy Filesystem Scan...
+                        docker run --rm -v aquasec/trivy:latest image arjun150800/%APP_NAME%:%COMMIT_ID%
+                    '''
+                }
             }
         }
 
