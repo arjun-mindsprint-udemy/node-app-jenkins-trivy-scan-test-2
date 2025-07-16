@@ -31,7 +31,7 @@ pipeline {
         stage('SonarQube Scan') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-                    bat 'sonar-scanner -Dsonar.projectKey=%APP_NAME% -Dsonar.sources=. -Dsonar.host.url=http://127.0.0.1:9001 -Dsonar.login=%SONAR_TOKEN%'
+                    bat 'sonar-scanner'
                 }
             }
 
